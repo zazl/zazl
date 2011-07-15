@@ -6,7 +6,19 @@
 	
 	<property
 		name="workspace.dir"
-		value="${basedir}/.."/>
+		value="${basedir}/../.."/>
+	
+	<property
+		name="optimizer.dir"
+		value="${basedir}/../../optimizer"/>
+	
+	<property
+		name="zazl.dir"
+		value="${basedir}/../../zazl"/>
+	
+	<property
+		name="serverutils.dir"
+		value="${basedir}/../../serverutils"/>
 	
 	<property
 		name="dojo.15.dir"
@@ -22,11 +34,11 @@
 	
 	<property
 		name="uglifyjs.dir"
-		value="${workspace.dir}/../targetplatform/uglifyjs/plugins/org.uglifyjs_1.0.1"/>
+		value="${workspace.dir}/../targetplatform/uglifyjs/plugins/org.uglifyjs_1.0.6"/>
 	
 	<property
 		name="requirejs.dir"
-		value="${workspace.dir}/../targetplatform/requirejs/plugins/org.requirejs_0.24.0"/>
+		value="${workspace.dir}/../targetplatform/requirejs/plugins/org.requirejs_0.25.0"/>
 	
 	<property
 		name="httpclient.dir"
@@ -44,7 +56,7 @@
 		<mkdir dir="${target.dir}/package/examples/css"/>
 		<mkdir dir="${target.dir}/package/examples/data"/>
 		<mkdir dir="${target.dir}/package/examples/handlers"/>
-		<copy file="${workspace.dir}/org.dojotoolkit.zazl.jetty/README.txt" todir="${target.dir}/package"/>
+		<copy file="${zazl.dir}/org.dojotoolkit.zazl.jetty/README.txt" todir="${target.dir}/package"/>
 		<copy todir="${target.dir}/package/server/library">
 	        <fileset dir="${equinox.dir}">
 	            <include name="javax.servlet_2.5.0*.jar"/>
@@ -65,59 +77,59 @@
 	        </fileset>
 		</copy>
 		<copy todir="${target.dir}/package/server">
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.rt.v8/nativelib/win32">
+	        <fileset dir="${serverutils.dir}/org.dojotoolkit.rt.v8/nativelib/win32">
 	            <include name="*.dll"/>
 	        </fileset>
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.rt.v8/nativelib/linux.x86">
+	        <fileset dir="${serverutils.dir}/org.dojotoolkit.rt.v8/nativelib/linux.x86">
 	            <include name="*.so"/>
 	        </fileset>
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.rt.v8/nativelib/macosx.x86">
+	        <fileset dir="${serverutils.dir}/org.dojotoolkit.rt.v8/nativelib/macosx.x86">
 	            <include name="*.jnilib"/>
 	        </fileset>
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.jetty">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.jetty">
 	            <include name="*.bat"/>
 	            <exclude name="run-zazl-debug.bat"/>
 	        </fileset>
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.jetty">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.jetty">
 	            <include name="*.sh"/>
 	            <exclude name="run-zazl-debug.sh"/>
 	        </fileset>
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.jetty">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.jetty">
 	            <include name="logging.properties"/>
 	        </fileset>
 		</copy>
 		<copy todir="${target.dir}/package/examples">
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources">
 	            <include name="*.*"/>
 	        </fileset>
 		</copy>
 		<copy todir="${target.dir}/package/examples/css">
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/css">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/css">
 	            <include name="*.*"/>
 	        </fileset>
 		</copy>
 		<copy todir="${target.dir}/package/examples/data">
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/data">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/data">
 	            <include name="*.*"/>
 	        </fileset>
 		</copy>
 		<copy todir="${target.dir}/package/examples/handlers">
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/handlers">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/handlers">
 	            <include name="*.*"/>
 	        </fileset>
 		</copy>
 		<copy todir="${target.dir}/package/examples/filters">
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/filters">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/filters">
 	            <include name="*.*"/>
 	        </fileset>
 		</copy>
 		<copy todir="${target.dir}/package/examples/tags">
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/tags">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/tags">
 	            <include name="*.*"/>
 	        </fileset>
 		</copy>
 		<jar destfile="${target.dir}/package/server/library/v8javabridge.jar"
-			basedir="${workspace.dir}/org.dojotoolkit.rt.v8/bin"/>
+			basedir="${serverutils.dir}/org.dojotoolkit.rt.v8/bin"/>
 		<jar destfile="${target.dir}/package/server/dojo15.jar">
 			<zipfileset dir="${dojo.15.dir}/dojo" prefix="dojo"/>
 			<zipfileset dir="${dojo.15.dir}/dijit" prefix="dijit"/>
@@ -135,7 +147,7 @@
 			<zipfileset dir="${uglifyjs.dir}/uglifyjs" prefix="uglifyjs"/>
 		</jar>
 		<jar destfile="${target.dir}/package/server/library/requirejs.jar">
-			<zipfileset dir="${requirejs.dir}/requirejs" prefix="requirejs"/>
+			<fileset dir="${requirejs.dir}"/>
 		</jar>
 		<path id="classpath">
 	        <fileset dir="${target.dir}/package/server/library">
@@ -148,7 +160,7 @@
 	    </manifestclasspath>
 		
 		<jar destfile="${target.dir}/package/server/library/zazljetty.jar"
-			basedir="${workspace.dir}/org.dojotoolkit.zazl.jetty/bin">
+			basedir="${zazl.dir}/org.dojotoolkit.zazl.jetty/bin">
 			<manifest>
 				<attribute name="Class-Path" value="${jar.classpath}" />
 				<attribute name="Main-Class" value="org.dojotoolkit.zazl.jetty.internal.ZazlServer" />
@@ -156,14 +168,14 @@
 		</jar>
 		
 		<zip destfile="${target.dir}/package/zazlserver.zip">
-			<fileset file="${workspace.dir}/org.dojotoolkit.zazl.jetty/LICENSE"/>
+			<fileset file="${zazl.dir}/org.dojotoolkit.zazl.jetty/LICENSE"/>
 			<fileset dir="${target.dir}/package">
 				<exclude name="**/dojo16.jar"/> 
 			</fileset>
 	    </zip>
 		
 		<tar destfile="${target.dir}/package/zazlserver.tar.gz" compression="gzip">
-			<tarfileset file="${workspace.dir}/org.dojotoolkit.zazl.jetty/LICENSE"/>
+			<tarfileset file="${zazl.dir}/org.dojotoolkit.zazl.jetty/LICENSE"/>
 			<tarfileset dir="${target.dir}/package">
 				<exclude name="**/*.sh"/> 
 				<exclude name="zazlserver.zip"/> 
@@ -181,44 +193,44 @@
 		</tar>
 		
 		<tar destfile="${target.dir}/package/zazlnodejs.tar.gz" compression="gzip">
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.optimizer.nodejs/jsoptimizer" prefix="zazlnodejs/node_modules/jsoptimizer"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.optimizer/optimizer" prefix="zazlnodejs/node_modules/jsoptimizer/lib/optimizer"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.optimizer.amd/optimizer" prefix="zazlnodejs/node_modules/jsoptimizer/lib/optimizer"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.server.util.nodejs/zazlutil" prefix="zazlnodejs/node_modules/zazlutil"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.nodejs/zazlserver" prefix="zazlnodejs/node_modules/zazlserver"/>
-			<tarfileset file="${workspace.dir}/org.dojotoolkit.zazl.optimizer/tag/jstag.js" prefix="zazlnodejs/node_modules/zazlserver/lib/org/dojotoolkit/zazl/optimizer/tag"/>
-			<tarfileset file="${workspace.dir}/org.dojotoolkit.zazl/jssrc/dojox/serverdtl/Request.js" prefix="zazlnodejs/node_modules/zazlserver/lib/dojox/serverdtl"/>
-			<tarfileset file="${workspace.dir}/org.dojotoolkit.zazl/jssrc/dojox/serverdtl/util.js" prefix="zazlnodejs/node_modules/zazlserver/lib/dojox/serverdtl"/>
+			<tarfileset dir="${optimizer.dir}/org.dojotoolkit.optimizer.nodejs/jsoptimizer" prefix="zazlnodejs/node_modules/jsoptimizer"/>
+			<tarfileset dir="${optimizer.dir}/org.dojotoolkit.optimizer/optimizer" prefix="zazlnodejs/node_modules/jsoptimizer/lib/optimizer"/>
+			<tarfileset dir="${optimizer.dir}/org.dojotoolkit.optimizer.amd/optimizer" prefix="zazlnodejs/node_modules/jsoptimizer/lib/optimizer"/>
+			<tarfileset dir="${serverutils.dir}/org.dojotoolkit.server.util.nodejs/zazlutil" prefix="zazlnodejs/node_modules/zazlutil"/>
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.nodejs/zazlserver" prefix="zazlnodejs/node_modules/zazlserver"/>
+			<tarfileset file="${zazl.dir}/org.dojotoolkit.zazl.optimizer/tag/jstag.js" prefix="zazlnodejs/node_modules/zazlserver/lib/org/dojotoolkit/zazl/optimizer/tag"/>
+			<tarfileset file="${zazl.dir}/org.dojotoolkit.zazl/jssrc/dojox/serverdtl/Request.js" prefix="zazlnodejs/node_modules/zazlserver/lib/dojox/serverdtl"/>
+			<tarfileset file="${zazl.dir}/org.dojotoolkit.zazl/jssrc/dojox/serverdtl/util.js" prefix="zazlnodejs/node_modules/zazlserver/lib/dojox/serverdtl"/>
 			<tarfileset dir="${workspace.dir}/../targetplatform/dojo/plugins/org.dojotoolkit.dojo_1.5.0/dojo" prefix="zazlnodejs/dojo15/dojo"/>
 			<tarfileset dir="${workspace.dir}/../targetplatform/dojo/plugins/org.dojotoolkit.dojo_1.5.0/dijit" prefix="zazlnodejs/dojo15/dijit"/>
 			<tarfileset dir="${workspace.dir}/../targetplatform/dojo/plugins/org.dojotoolkit.dojo_1.5.0/dojox" prefix="zazlnodejs/dojo15/dojox"/>
 			<tarfileset dir="${workspace.dir}/../targetplatform/dojo/plugins/org.dojotoolkit.dojo_1.6.0/dojo" prefix="zazlnodejs/dojo16/dojo"/>
 			<tarfileset dir="${workspace.dir}/../targetplatform/dojo/plugins/org.dojotoolkit.dojo_1.6.0/dijit" prefix="zazlnodejs/dojo16/dijit"/>
 			<tarfileset dir="${workspace.dir}/../targetplatform/dojo/plugins/org.dojotoolkit.dojo_1.6.0/dojox" prefix="zazlnodejs/dojo16/dojox"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources" prefix="zazlnodejs/samples">
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources" prefix="zazlnodejs/samples">
 				<include name="*.html"/> 
 				<include name="*.json"/> 
 			</tarfileset>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/css" prefix="zazlnodejs/samples/css"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/data" prefix="zazlnodejs/samples/data"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/" prefix="zazlnodejs/samples/org/dojotoolkit/zazl/samples">
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/css" prefix="zazlnodejs/samples/css"/>
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/data" prefix="zazlnodejs/samples/data"/>
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/" prefix="zazlnodejs/samples/org/dojotoolkit/zazl/samples">
 				<include name="*.dtl"/> 
 				<include name="*.js"/> 
 			</tarfileset>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/handlers" prefix="zazlnodejs/samples/org/dojotoolkit/zazl/samples/handlers"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/filters" prefix="zazlnodejs/samples/org/dojotoolkit/zazl/samples/filters"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.samples/resources/tags" prefix="zazlnodejs/samples/org/dojotoolkit/zazl/samples/tags"/>
-			<tarfileset file="${workspace.dir}/org.dojotoolkit.zazl.nodejs/zazlserver.js" prefix="zazlnodejs"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.zazl.amd.samples/resources" prefix="zazlnodejs/amdsamples"/>
-			<tarfileset dir="${requirejs.dir}/requirejs" prefix="zazlnodejs/amdsamples/requirejs"/>
-			<tarfileset dir="${workspace.dir}/org.dojotoolkit.optimizer.amd/loader" prefix="zazlnodejs/amdsamples/loader"/>
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/handlers" prefix="zazlnodejs/samples/org/dojotoolkit/zazl/samples/handlers"/>
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/filters" prefix="zazlnodejs/samples/org/dojotoolkit/zazl/samples/filters"/>
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.samples/resources/tags" prefix="zazlnodejs/samples/org/dojotoolkit/zazl/samples/tags"/>
+			<tarfileset file="${zazl.dir}/org.dojotoolkit.zazl.nodejs/zazlserver.js" prefix="zazlnodejs"/>
+			<tarfileset dir="${zazl.dir}/org.dojotoolkit.zazl.amd.samples/resources" prefix="zazlnodejs/amdsamples"/>
+			<tarfileset dir="${requirejs.dir}" prefix="zazlnodejs/amdsamples/requirejs"/>
+			<tarfileset dir="${optimizer.dir}/org.dojotoolkit.optimizer.amd/loader" prefix="zazlnodejs/amdsamples/loader"/>
 		</tar>
 		
-		<war destfile="${target.dir}/package/zazlsamples.war" webxml="${workspace.dir}/org.dojotoolkit.zazl.samples/WARContent/web.xml">
-			<zipfileset dir="${workspace.dir}/org.dojotoolkit.compressor/src" prefix="WEB-INF/classes">
+		<war destfile="${target.dir}/package/zazlsamples.war" webxml="${zazl.dir}/org.dojotoolkit.zazl.samples/WARContent/web.xml">
+			<zipfileset dir="${optimizer.dir}/org.dojotoolkit.compressor/src" prefix="WEB-INF/classes">
 				<include name="*org_dojotoolkit_compressor.properties"/> 
 			</zipfileset>
-			<zipfileset dir="${workspace.dir}/org.dojotoolkit.optimizer/src" prefix="WEB-INF/classes">
+			<zipfileset dir="${optimizer.dir}/org.dojotoolkit.optimizer/src" prefix="WEB-INF/classes">
 				<include name="*org_dojotoolkit_optimizer.properties"/> 
 			</zipfileset>
 			<fileset dir="${target.dir}/package/examples"/>
@@ -254,29 +266,29 @@
 		<propertyfile file="${target.dir}/package/org_dojotoolkit_optimizer.properties">
 		  <entry  key="jsOptimizerClassName" value="org.dojotoolkit.optimizer.amd.rhino.AMDJSOptimizer"/>
 		</propertyfile>		
-		<war destfile="${target.dir}/package/zazlamdsamples.war" webxml="${workspace.dir}/org.dojotoolkit.zazl.amd.samples/WARContent/web.xml">
-			<zipfileset dir="${workspace.dir}/org.dojotoolkit.compressor/src" prefix="WEB-INF/classes">
+		<war destfile="${target.dir}/package/zazlamdsamples.war" webxml="${zazl.dir}/org.dojotoolkit.zazl.amd.samples/WARContent/web.xml">
+			<zipfileset dir="${optimizer.dir}/org.dojotoolkit.compressor/src" prefix="WEB-INF/classes">
 				<include name="*org_dojotoolkit_compressor.properties"/> 
 			</zipfileset>
-			<zipfileset dir="${workspace.dir}/org.dojotoolkit.optimizer/src" prefix="WEB-INF/classes">
+			<zipfileset dir="${optimizer.dir}/org.dojotoolkit.optimizer/src" prefix="WEB-INF/classes">
 				<include name="*org_dojotoolkit_optimizer.properties"/> 
 			</zipfileset>
 			<zipfileset dir="${target.dir}/package" prefix="WEB-INF/classes">
 				<include name="org_dojotoolkit_optimizer.properties"/> 
 			</zipfileset>
-	        <fileset dir="${workspace.dir}/org.dojotoolkit.zazl.amd.samples/resources">
+	        <fileset dir="${zazl.dir}/org.dojotoolkit.zazl.amd.samples/resources">
 	            <include name="*.*"/>
 	        </fileset>
-	        <zipfileset dir="${workspace.dir}/org.dojotoolkit.zazl.amd.samples/resources/app" prefix="app">
+	        <zipfileset dir="${zazl.dir}/org.dojotoolkit.zazl.amd.samples/resources/app" prefix="app">
 	            <include name="*.*"/>
 	        </zipfileset>
-	        <zipfileset dir="${workspace.dir}/org.dojotoolkit.zazl.amd.samples/resources/app/nls" prefix="app/nls">
+	        <zipfileset dir="${zazl.dir}/org.dojotoolkit.zazl.amd.samples/resources/app/nls" prefix="app/nls">
 	            <include name="*.*"/>
 	        </zipfileset>
-	        <zipfileset dir="${workspace.dir}/org.dojotoolkit.zazl.amd.samples/resources/app/nls/fr" prefix="app/nls/fr">
+	        <zipfileset dir="${zazl.dir}/org.dojotoolkit.zazl.amd.samples/resources/app/nls/fr" prefix="app/nls/fr">
 	            <include name="*.*"/>
 	        </zipfileset>
-	        <zipfileset dir="${workspace.dir}/org.dojotoolkit.zazl.amd.samples/resources/css" prefix="css">
+	        <zipfileset dir="${zazl.dir}/org.dojotoolkit.zazl.amd.samples/resources/css" prefix="css">
 	            <include name="*.*"/>
 	        </zipfileset>
 			<zipfileset dir="${target.dir}/package/server" prefix="WEB-INF/lib">
