@@ -48,3 +48,12 @@ To start Zazl with V8:
 (Linux/Mac) ./run-zazl-v8.sh
 
 3. Open a browser to http://localhost:8080/index.html
+
+Example WAR files
+-----------------
+
+There are 2 WAR files in the download area that demonstrate using Zazl in a JEE WebContainer environment
+
+zazlsamples.war — Samples WAR using Zazl DTL for HTML frontend. Once loaded go to http://localhost:8080/zazlsamples/index.html
+
+zazlamdsamples.war — AMD Optimizer Samples using Zazl DTL for HTML frontend. Once loaded go to http://localhost:8080/zazlamdsamples/index.html
