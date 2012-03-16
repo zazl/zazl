@@ -25,9 +25,9 @@ import org.mortbay.jetty.handler.AbstractHandler;
 public class JSContentHandler extends AbstractHandler {
 	private JSHandler jsHandler = null;
 	
-	public JSContentHandler(ResourceLoader resourceLoader, JSOptimizerFactory jsOptimizerFactory, RhinoClassLoader rhinoClassLoader, boolean javaChecksum, JSCompressorFactory jsCompressorFactory) {
+	public JSContentHandler(ResourceLoader resourceLoader, JSOptimizerFactory jsOptimizerFactory, RhinoClassLoader rhinoClassLoader, JSCompressorFactory jsCompressorFactory) {
 		jsHandler = new SyncLoaderJSHandler();
-		jsHandler.initialize(resourceLoader, rhinoClassLoader, javaChecksum, jsOptimizerFactory, jsCompressorFactory);
+		jsHandler.initialize(resourceLoader, rhinoClassLoader, jsOptimizerFactory, jsCompressorFactory);
 	}
 
 	public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch) throws IOException, ServletException {

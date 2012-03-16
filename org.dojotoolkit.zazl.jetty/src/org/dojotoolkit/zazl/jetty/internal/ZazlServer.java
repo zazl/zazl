@@ -79,7 +79,7 @@ public class ZazlServer {
 			if (compressJS != null && compressJS.equalsIgnoreCase("true")) {
 				jsCompressorFactory = new JSCompressorFactoryImpl();
 			}
-			JSContentHandler jsContentHandler = new JSContentHandler(resourceLoader, jsOptimizerFactory, rhinoClassLoader, javaChecksum, jsCompressorFactory); 
+			JSContentHandler jsContentHandler = new JSContentHandler(resourceLoader, jsOptimizerFactory, rhinoClassLoader, jsCompressorFactory); 
 			zazlHandler.initialize(root, resourceLoader, rhinoClassLoader, jsContentHandler.getJSOptimizer()); 
 			ResourceHandler rootHandler = new ResourceHandler();
 			rootHandler.setBaseResource(new FileResource(new URL("file:"+root.getCanonicalPath())));
