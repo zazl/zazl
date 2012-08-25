@@ -30,7 +30,7 @@
 	
 	<property
 		name="json.dir"
-		value="${workspace.dir}/../targetplatform/json/plugins/org.json_1.0.0"/>
+		value="${workspace.dir}/../targetplatform/json/plugins/org.json.js_1.0.0"/>
 	
 	<property
 		name="uglifyjs.dir"
