@@ -15,9 +15,9 @@ import java.util.List;
 import org.dojotoolkit.server.util.resource.CachingResourceLoader;
 import org.dojotoolkit.zazl.contentprovider.ContentProvider;
 import org.dojotoolkit.zazl.contentprovider.Util;
-import org.mortbay.jetty.Handler;
-import org.mortbay.jetty.handler.ResourceHandler;
-import org.mortbay.resource.Resource;
+import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.util.resource.Resource;
 
 public class JettyResourceLoader extends CachingResourceLoader {
 	private File root = null;

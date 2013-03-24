@@ -9,7 +9,7 @@ import java.io.File;
 
 import org.dojotoolkit.zazl.contentprovider.ContentProvider;
 import org.dojotoolkit.zazl.servlet.osgi.registry.ContentProviderRegistryListener;
-import org.mortbay.jetty.handler.ResourceHandler;
+import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 

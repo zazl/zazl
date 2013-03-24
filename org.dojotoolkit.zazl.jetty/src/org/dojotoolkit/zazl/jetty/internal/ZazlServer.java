@@ -27,18 +27,18 @@ import org.dojotoolkit.optimizer.rhino.RhinoJSOptimizerFactory;
 import org.dojotoolkit.optimizer.v8.V8JSOptimizerFactory;
 import org.dojotoolkit.server.util.resource.ResourceLoader;
 import org.dojotoolkit.server.util.rhino.RhinoClassLoader;
-import org.mortbay.jetty.Connector;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.bio.SocketConnector;
-import org.mortbay.jetty.handler.HandlerList;
-import org.mortbay.jetty.handler.ResourceHandler;
-import org.mortbay.log.Logger;
-import org.mortbay.resource.FileResource;
-import org.mortbay.resource.Resource;
+import org.eclipse.jetty.server.Connector;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.bio.SocketConnector;
+import org.eclipse.jetty.server.handler.HandlerList;
+import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.util.log.Logger;
+import org.eclipse.jetty.util.resource.FileResource;
+import org.eclipse.jetty.util.resource.Resource;
 
 public class ZazlServer {
 	static {
-		org.mortbay.log.Log.setLog(new ZazlServer.NullLogger());
+		org.eclipse.jetty.util.log.Log.setLog(new ZazlServer.NullLogger());
 	}
 	
 	private Server server = new Server();
@@ -206,6 +206,34 @@ public class ZazlServer {
 		}
 
 		public void warn(String arg0, Object arg1, Object arg2) {
+		}
+
+		public String getName() {
+			return null;
+		}
+
+		public void warn(String msg, Object... args) {
+		}
+
+		public void warn(Throwable thrown) {
+		}
+
+		public void info(String msg, Object... args) {
+		}
+
+		public void info(Throwable thrown) {
+		}
+
+		public void info(String msg, Throwable thrown) {
+		}
+
+		public void debug(String msg, Object... args) {
+		}
+
+		public void debug(Throwable thrown) {
+		}
+
+		public void ignore(Throwable ignored) {
 		}
 	}
 	

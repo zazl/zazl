@@ -2,8 +2,8 @@
 <launchConfiguration type="org.eclipse.pde.ui.EquinoxLauncher">
 <setAttribute key="additional_plugins">
 <setEntry value="org.dojotoolkit.zazl.amd.samples:1.0.0.qualifier:default:true"/>
-<setEntry value="org.eclipse.equinox.http.jetty:2.0.100.v20110502:default:true"/>
-<setEntry value="org.eclipse.equinox.http.servlet:1.1.200.v20110502:default:true"/>
+<setEntry value="org.eclipse.equinox.http.jetty:3.0.1.v20121109-203239:default:true"/>
+<setEntry value="org.eclipse.equinox.http.servlet:1.1.300.v20120912-130548:default:true"/>
 </setAttribute>
 <booleanAttribute key="append.args" value="true"/>
 <booleanAttribute key="automaticAdd" value="false"/>

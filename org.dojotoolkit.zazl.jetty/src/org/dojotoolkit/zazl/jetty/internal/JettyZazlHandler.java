@@ -17,9 +17,9 @@ import org.dojotoolkit.optimizer.JSOptimizer;
 import org.dojotoolkit.server.util.resource.ResourceLoader;
 import org.dojotoolkit.server.util.rhino.RhinoClassLoader;
 import org.dojotoolkit.zazl.servlet.ZazlHandler;
-import org.mortbay.jetty.HttpConnection;
-import org.mortbay.jetty.Request;
-import org.mortbay.jetty.handler.AbstractHandler;
+import org.eclipse.jetty.server.AbstractHttpConnection;
+import org.eclipse.jetty.server.Request;
+import org.eclipse.jetty.server.handler.AbstractHandler;
 
 public class JettyZazlHandler extends AbstractHandler {
 	protected ZazlHandler zazlHandler = null;
@@ -43,11 +43,11 @@ public class JettyZazlHandler extends AbstractHandler {
 		}
 	}
 	
-    public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch) throws IOException, ServletException  {
+	public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     	request.setAttribute("org.dojotoolkit.optimizer.JSOptimizer", jsOptimizer);
     	boolean handled = zazlHandler.handle(request, response);
     	if (handled) {
-			Request jettyRequest = (request instanceof Request) ? (Request)request:HttpConnection.getCurrentConnection().getRequest();
+			Request jettyRequest = (request instanceof Request) ? (Request)request:AbstractHttpConnection.getCurrentConnection().getRequest();
 			jettyRequest.setHandled(true);
     	}
 	}

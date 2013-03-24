@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.mortbay.jetty.handler.ResourceHandler;
-import org.mortbay.resource.Resource;
+import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.util.resource.Resource;
 import org.osgi.framework.Bundle;
 
 public class BundleResourceHandler extends ResourceHandler {
